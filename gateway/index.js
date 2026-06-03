@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
 app.use('/api/auth', async (req, res) => {
   try {
     const strippedPath = req.originalUrl.replace('/api/auth', '')
-    const url = `http://localhost:5001${strippedPath}`
+    const url = `https://bidrush-auth.onrender.com${strippedPath}`
     console.log('Forwarding to:', url)
     const response = await axios({
       method: req.method,
@@ -41,7 +41,7 @@ app.use('/api/auth', async (req, res) => {
 // Auction Service — keeps /api/auctions
 app.use('/api/auctions', async (req, res) => {
   try {
-    const url = `http://localhost:5002${req.originalUrl}`
+    const url = `https://bidrush-auction.onrender.com${req.originalUrl}`
     console.log('Forwarding to:', url)
     const response = await axios({
       method: req.method,
@@ -63,7 +63,7 @@ app.use('/api/auctions', async (req, res) => {
 // Bid Service — keeps /api/bids
 app.use('/api/bids', async (req, res) => {
   try {
-    const url = `http://localhost:5003${req.originalUrl}`
+    const url = `https://bidrush-bid.onrender.com${req.originalUrl}`
     console.log('Forwarding to:', url)
     const response = await axios({
       method: req.method,
@@ -83,7 +83,7 @@ app.use('/api/bids', async (req, res) => {
 // Notification Service — keeps /api/notifications
 app.use('/api/notifications', async (req, res) => {
   try {
-    const url = `http://localhost:5004${req.originalUrl}`
+    const url = `https://bidrush-notification.onrender.com${req.originalUrl}`
     console.log('Forwarding to:', url)
     const response = await axios({
       method: req.method,
