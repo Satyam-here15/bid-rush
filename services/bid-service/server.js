@@ -8,7 +8,10 @@ const bidRoutes = require('./src/routes/bid.routes');
 const app = express();
 const PORT = process.env.PORT || 5003;
 
-app.use(cors());
+app.use(cors({
+  origin: ["https://bid-rush.netlify.app", "http://localhost:5173"],
+  credentials: true
+}))
 app.use(express.json());
 
 app.use('/api/bids', bidRoutes);

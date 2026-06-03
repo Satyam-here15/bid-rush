@@ -6,7 +6,10 @@ const cors = require('cors');
 const { startWorker } = require('./worker');
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: ["https://bid-rush.netlify.app", "http://localhost:5173"],
+  credentials: true
+}))
 app.use(express.json());
 
 // Create HTTP server and attach Socket.io

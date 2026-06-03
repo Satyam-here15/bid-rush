@@ -12,7 +12,10 @@ const auctionRoutes = require('./routes/auction.routes')
 
 const app = express()
 
-app.use(cors())
+app.use(cors({
+  origin: ["https://bid-rush.netlify.app", "http://localhost:5173"],
+  credentials: true
+}))
 app.use(express.json())
 
 // Health check — open http://localhost:5002/ to confirm it's running
