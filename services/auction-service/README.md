@@ -60,7 +60,7 @@ This reads package.json and downloads all the packages. You'll see a `node_modul
 - The file already has the correct MongoDB URI from Member 1
 - It should look like this:
 ```
-MONGO_URI=mongodb+srv://lakshaybh2004_db_user:800590@cluster0.gyesxet.mongodb.net/auction-db?retryWrites=true&w=majority&appName=Cluster0
+MONGO_URI=mongodb+srv://<username>:<password>@<cluster>.mongodb.net
 PORT=5002
 JWT_SECRET=bidrush_super_secret_key_2024
 INTERNAL_SECRET=bidrush_internal_secret_789
