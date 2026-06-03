@@ -20,63 +20,52 @@ function AdminLogin() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
-      <div className="w-full max-w-sm animate-fadeUp">
+    <div style={{ minHeight: "100vh", background: "var(--bg)", display: "flex", alignItems: "center", justifyContent: "center", padding: "2rem", position: "relative", overflow: "hidden" }}>
+      <div className="bg-glow bg-glow-1" />
+      <div className="bg-glow bg-glow-2" />
 
-        <div className="text-center mb-10">
-          <span className="font-display text-2xl font-bold text-gray-900">
-            Bid<span className="text-emerald-500">Rush</span>
-          </span>
-          <p className="text-xs text-gray-400 mt-1 uppercase tracking-widest">Admin Panel</p>
+      <div style={{ width: "100%", maxWidth: "400px", position: "relative", zIndex: 1 }}>
+        <div className="fade-up" style={{ textAlign: "center", marginBottom: "2rem" }}>
+          <div style={{
+            width: "52px", height: "52px", background: "var(--bg-3)",
+            border: "1px solid var(--border)", borderRadius: "14px",
+            display: "flex", alignItems: "center", justifyContent: "center",
+            fontSize: "1.5rem", margin: "0 auto 1rem",
+          }}>🔐</div>
+          <h1 className="serif" style={{ fontSize: "1.8rem", fontWeight: "700", marginBottom: "0.3rem" }}>
+            Admin <span style={{ color: "var(--gold)" }}>Panel</span>
+          </h1>
+          <p style={{ color: "var(--text-muted)", fontSize: "0.85rem" }}>Restricted access only</p>
         </div>
 
-        <div className="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm">
-          <div className="mb-7">
-            <h1 className="font-display text-2xl font-bold text-gray-900 mb-1">
-              Admin Login
-            </h1>
-            <p className="text-gray-400 text-sm">Restricted access only</p>
-          </div>
-
+        <div className="glass fade-up stagger-1" style={{ padding: "2.5rem" }}>
           {error && (
-            <div className="bg-red-50 border border-red-100 text-red-500 px-4 py-2.5 rounded-lg mb-5 text-sm">
-              {error}
-            </div>
+            <div className="fade-in" style={{
+              background: "rgba(224,85,85,0.1)", border: "1px solid rgba(224,85,85,0.2)",
+              color: "var(--red)", padding: "0.75rem 1rem", borderRadius: "10px",
+              fontSize: "0.85rem", marginBottom: "1.5rem",
+            }}>{error}</div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "1.2rem" }}>
             <div>
-              <label className="block text-xs font-semibold text-gray-500 uppercase tracking-widest mb-1.5">
-                Email
+              <label style={{ display: "block", fontSize: "0.72rem", fontWeight: "600", color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "0.5rem" }}>
+                Admin Email
               </label>
-              <input
-                type="text"
-                value={formData.email}
+              <input type="text" value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                required
-                placeholder="Admin69@gmail.com"
-                className="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-50 transition-all"
-              />
+                required placeholder="Admin69@gmail.com" className="input-dark" />
             </div>
             <div>
-              <label className="block text-xs font-semibold text-gray-500 uppercase tracking-widest mb-1.5">
+              <label style={{ display: "block", fontSize: "0.72rem", fontWeight: "600", color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "0.5rem" }}>
                 Password
               </label>
-              <input
-                type="password"
-                value={formData.password}
+              <input type="password" value={formData.password}
                 onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                required
-                placeholder="••••••••"
-                className="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-50 transition-all"
-              />
+                required placeholder="••••••••" className="input-dark" />
             </div>
-
-            <button
-              type="submit"
-              className="w-full bg-gray-900 hover:bg-emerald-500 text-white font-semibold py-3 rounded-lg transition-all duration-200 mt-2 text-sm"
-            >
-              Login as Admin →
+            <button type="submit" className="btn-gold" style={{ padding: "0.9rem", fontSize: "0.95rem", marginTop: "0.5rem" }}>
+              Access Admin Panel →
             </button>
           </form>
         </div>

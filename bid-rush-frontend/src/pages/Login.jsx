@@ -8,9 +8,7 @@ function Login() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,104 +27,110 @@ function Login() {
   };
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center px-4 overflow-hidden">
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center blur-sm scale-110"
-        style={{
-          backgroundImage:
-            "url('https://images.unsplash.com/photo-1676181739859-08330dea8999?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
-        }}
-      />
+    <div style={{ minHeight: "100vh", background: "var(--bg)", display: "flex", alignItems: "center", justifyContent: "center", padding: "2rem", position: "relative", overflow: "hidden" }}>
+      <div className="bg-glow bg-glow-1" />
+      <div className="bg-glow bg-glow-2" />
 
-      {/* Dark overlay for contrast */}
-      <div className="absolute inset-0 bg-black/40" />
-
-      {/* Dark overlay for contrast */}
-      <div className="absolute inset-0 bg-black/40" />
-
-      {/* Feature Marquee Box */}
-      <div className="absolute top-24 w-full flex justify-center z-10 px-4">
-        <div className="w-full max-w-4xl overflow-hidden rounded-xl bg-white/20 backdrop-blur-md border border-white/30 shadow-lg py-3">
-          <div className="animate-marquee flex gap-16 text-white text-base font-semibold px-6">
-            <span>Real-time Bidding</span>
-            <span>Secure JWT Authentication</span>
-            <span>Live Auction Updates</span>
-            <span>Transparent Bid History</span>
-            <span>Scalable Microservice Architecture</span>
-
-            {/* duplicate for smooth loop */}
-            <span>Real-time Bidding</span>
-            <span>Secure JWT Authentication</span>
-            <span>Live Auction Updates</span>
-            <span>Transparent Bid History</span>
-            <span>Scalable Microservice Architecture</span>
-          </div>
-        </div>
-      </div>
-      {/* Login Card */}
-      <div className="relative z-10 w-full max-w-sm animate-fadeUp">
-        {/* Logo */}
-        <div className="text-center mb-10">
-          <span className="font-display text-2xl font-bold text-white">
-            Bid<span className="text-emerald-400">Rush</span>
-          </span>
-        </div>
-
-        <div className="bg-white/95 backdrop-blur-md border border-gray-200 rounded-2xl p-8 shadow-2xl">
-          <div className="mb-7">
-            <h1 className="font-display text-2xl font-bold text-gray-900 mb-1">
-              Welcome back
-            </h1>
-            <p className="text-gray-400 text-sm">Log in to keep bidding</p>
-          </div>
-
-          {error && (
-            <div className="bg-red-50 border border-red-100 text-red-500 px-4 py-2.5 rounded-lg mb-5 text-sm">
-              {error}
-            </div>
-          )}
-
-          <form onSubmit={handleSubmit} className="space-y-4">
-            {["email", "password"].map((field) => (
-              <div key={field}>
-                <label className="block text-xs font-semibold text-gray-500 uppercase tracking-widest mb-1.5">
-                  {field}
-                </label>
-
-                <input
-                  type={field}
-                  name={field}
-                  value={formData[field]}
-                  onChange={handleChange}
-                  required
-                  placeholder={
-                    field === "email" ? "you@example.com" : "••••••••"
-                  }
-                  className="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-50 transition-all"
-                />
-              </div>
-            ))}
-
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full bg-gray-900 hover:bg-emerald-500 disabled:opacity-40 text-white font-semibold py-3 rounded-lg transition-all duration-200 mt-2 text-sm"
-            >
-              {loading ? "Logging in..." : "Let's Go →"}
-            </button>
-          </form>
-
-          <p className="text-sm text-center text-gray-400 mt-6">
-            New here?{" "}
-            <Link
-              to="/register"
-              className="text-emerald-600 hover:text-emerald-500 font-medium transition"
-            >
-              Create account
-            </Link>
+      {/* Left panel — branding */}
+      <div className="hidden lg:flex flex-col justify-between" style={{
+        width: "480px", height: "580px", padding: "3rem",
+        background: "linear-gradient(135deg, var(--bg-3), var(--bg-4))",
+        border: "1px solid var(--gold-border)", borderRadius: "24px",
+        marginRight: "2rem", position: "relative", overflow: "hidden",
+      }}>
+        <div style={{
+          position: "absolute", top: "-60px", right: "-60px",
+          width: "300px", height: "300px", borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(212,168,67,0.1), transparent 70%)",
+        }} />
+        <div>
+          <div style={{
+            width: "48px", height: "48px",
+            background: "linear-gradient(135deg, #c9973a, #f0c866)",
+            borderRadius: "14px", display: "flex", alignItems: "center",
+            justifyContent: "center", fontSize: "1.4rem",
+            fontFamily: "Playfair Display, serif", fontWeight: "900",
+            color: "#1a1000", marginBottom: "2rem",
+            boxShadow: "0 8px 24px rgba(212,168,67,0.3)",
+          }}>B</div>
+          <h1 style={{ fontFamily: "Playfair Display, serif", fontSize: "2.5rem", fontWeight: "700", lineHeight: 1.2, marginBottom: "1rem" }}>
+            The Premier<br /><span style={{ color: "var(--gold)" }}>Auction</span><br />Platform
+          </h1>
+          <p style={{ color: "var(--text-muted)", fontSize: "0.95rem", lineHeight: 1.7 }}>
+            Real-time bidding. Live updates. Transparent transactions. Built for the modern bidder.
           </p>
         </div>
+
+        <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+          {[
+            { icon: "⚡", label: "Real-time bidding with WebSockets" },
+            { icon: "🔒", label: "Secure JWT authentication" },
+            { icon: "📊", label: "Live bid feed & history" },
+            { icon: "🏆", label: "Instant winner notification" },
+          ].map(({ icon, label }) => (
+            <div key={label} className="flex items-center gap-3">
+              <span style={{ fontSize: "1.1rem" }}>{icon}</span>
+              <span style={{ color: "var(--text-mid)", fontSize: "0.85rem" }}>{label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Right panel — form */}
+      <div className="glass fade-up" style={{ width: "100%", maxWidth: "420px", padding: "2.5rem" }}>
+        <div style={{ marginBottom: "2rem" }}>
+          <p style={{ color: "var(--gold)", fontSize: "0.75rem", fontWeight: "600", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "0.5rem" }}>
+            Welcome back
+          </p>
+          <h2 className="serif" style={{ fontSize: "1.8rem", fontWeight: "700", marginBottom: "0.4rem" }}>
+            Sign in to BidRush
+          </h2>
+          <p style={{ color: "var(--text-muted)", fontSize: "0.88rem" }}>
+            Enter your credentials to continue bidding
+          </p>
+        </div>
+
+        {error && (
+          <div className="fade-in" style={{
+            background: "rgba(224,85,85,0.1)", border: "1px solid rgba(224,85,85,0.2)",
+            color: "var(--red)", padding: "0.75rem 1rem", borderRadius: "10px",
+            fontSize: "0.85rem", marginBottom: "1.5rem",
+          }}>{error}</div>
+        )}
+
+        <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "1.2rem" }}>
+          {[
+            { name: "email", type: "email", label: "Email Address", placeholder: "you@example.com" },
+            { name: "password", type: "password", label: "Password", placeholder: "••••••••" },
+          ].map(({ name, type, label, placeholder }) => (
+            <div key={name}>
+              <label style={{ display: "block", fontSize: "0.72rem", fontWeight: "600", color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "0.5rem" }}>
+                {label}
+              </label>
+              <input
+                type={type} name={name}
+                value={formData[name]}
+                onChange={handleChange}
+                required placeholder={placeholder}
+                className="input-dark"
+              />
+            </div>
+          ))}
+
+          <button type="submit" disabled={loading} className="btn-gold"
+            style={{ padding: "0.9rem", fontSize: "0.95rem", marginTop: "0.5rem", width: "100%" }}>
+            {loading ? "Signing in..." : "Sign In →"}
+          </button>
+        </form>
+
+        <hr className="gold-line" style={{ margin: "1.8rem 0" }} />
+
+        <p style={{ textAlign: "center", color: "var(--text-muted)", fontSize: "0.85rem" }}>
+          New to BidRush?{" "}
+          <Link to="/register" style={{ color: "var(--gold-light)", fontWeight: "600", textDecoration: "none" }}>
+            Create an account
+          </Link>
+        </p>
       </div>
     </div>
   );
