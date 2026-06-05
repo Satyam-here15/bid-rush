@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-require('dotenv').config();
+require('dotenv').config({ override: false })
 
 const bidRoutes = require('./src/routes/bid.routes');
 
